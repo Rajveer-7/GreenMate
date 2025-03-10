@@ -16,12 +16,12 @@ GreenMate is an AI-powered mobile app that helps plant owners with personalized 
 🔹 Step 1: Download & Install Android Studio
 Download Here.
 🔹 Step 2: Install Android SDK
-Open Android Studio.
-Click on More Actions → SDK Manager.
-Go to SDK Tools and install:
-✅ Android SDK Command-line Tools (latest)
-✅ Android SDK Platform-Tools
-✅ Android Emulator
+#### 1) Open Android Studio.
+#### 2) Click on More Actions → SDK Manager.
+#### 3) Go to SDK Tools and install:
+#### ✅ Android SDK Command-line Tools (latest)
+#### ✅ Android SDK Platform-Tools
+#### ✅ Android Emulator
 
  3️⃣ Verify Flutter Setup
 Run:
