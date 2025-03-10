@@ -13,9 +13,9 @@ GreenMate is an AI-powered mobile app that helps plant owners with personalized 
 
 🚀 2️⃣ Install Android Studio & SDK Tools
 
-🔹 Step 1: Download & Install Android Studio
-Download Here.
-🔹 Step 2: Install Android SDK
+### 🔹 Step 1: Download & Install Android Studio
+
+### 🔹 Step 2: Install Android SDK
 #### 1) Open Android Studio.
 #### 2) Click on More Actions → SDK Manager.
 #### 3) Go to SDK Tools and install:
@@ -23,15 +23,14 @@ Download Here.
 #### ✅ Android SDK Platform-Tools
 #### ✅ Android Emulator
 
- 3️⃣ Verify Flutter Setup
-Run:
-    powershell _ "flutter doctor"
-✅ If all checks pass, you're good!
-❌ If Android licenses are missing, run:
-# powershell  - "flutter doctor --android-licenses" - and  ensure you have completed all steps while installking flutter from ## their documentation.
-### Press Y to accept licenses.
+ ### 3️⃣ Verify Flutter Setup
+#### Run: powershell -  "flutter doctor"
+#### ✅ If all checks pass, you're good!
+#### ❌ If Android licenses are missing, run:
+#### powershell  - "flutter doctor --android-licenses" 
+#### Ensure you have completed all steps while installing flutter from their documentation.
+#### Press Y to accept licenses.
 
 4️⃣ Install VS Code Extensions (Optional)
-#
-## Flutter Extension (Ctrl + Shift + X → Search Flutter).
-### Dart Extension (Ctrl + Shift + X → Search Dart).
+#### Flutter Extension (Ctrl + Shift + X → Search Flutter).
+#### Dart Extension (Ctrl + Shift + X → Search Dart).
