@@ -8,7 +8,7 @@ GreenMate is an AI-powered mobile app that helps plant owners with personalized 
 ## **🚀 1️⃣ Setting Up Flutter & Android Studio**
 ### 🔹 **Download & Install Flutter**
 #### LINK: https://docs.flutter.dev/get-started/install
-# - Please follow the installation documentation for a successful installation of flutter
+#### - Please follow the installation documentation for a successful installation of flutter
 
 
 🚀 2️⃣ Install Android Studio & SDK Tools
