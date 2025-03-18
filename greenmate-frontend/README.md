@@ -1,6 +1,6 @@
-# greenmate
+# green_mate
 
-A new Flutter project.
+Capstone Project
 
 ## Getting Started
 
