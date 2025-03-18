@@ -1,4 +1,4 @@
-# Capstone-Projecttt
+# Capstone-Project
  
 ## 📌 Project Overview
 GreenMate is an AI-powered mobile app that helps plant owners with personalized care guidance.
