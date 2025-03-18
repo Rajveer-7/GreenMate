@@ -68,12 +68,18 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		/* firebase admin
+
 		<dependency>
     <groupId>com.google.firebase</groupId>
     <artifactId>firebase-admin</artifactId>
     <version>9.2.0</version>
 </dependency>
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+</dependency>
+
 	</dependencies>
 
 	<build>
