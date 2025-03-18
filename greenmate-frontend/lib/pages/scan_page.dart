@@ -15,7 +15,7 @@ class ScanPage extends StatelessWidget {
         //weather
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Row(children: [Text("Brampton- 12C", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)],),
+          child: Row(children: [Text("Brampton- 11C", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)],),
         ),
 
 
