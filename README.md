@@ -34,3 +34,14 @@ GreenMate is an AI-powered mobile app that helps plant owners with personalized 
 ## 4️⃣ Install VS Code Extensions (Optional)
 #### Flutter Extension (Ctrl + Shift + X → Search Flutter).
 #### Dart Extension (Ctrl + Shift + X → Search Dart).
+
+⚙️ NDK Compatibility (Important for All Group Members)
+📌 This project requires Android NDK version 27.0.12077973
+
+To install:
+
+Open Android Studio > SDK Manager > SDK Tools
+
+Enable NDK (Side by side) and select 27.0.12077973
+
+In your android/build.gradle.kts, make sure this line is included:
