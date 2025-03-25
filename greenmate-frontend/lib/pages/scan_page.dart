@@ -34,8 +34,8 @@ class _ScanPageState extends State<ScanPage> {
   }
 
   Future<void> loadModel() async {
-    final modelPath = await getModelPath(
-        'assets/ml/model_plant_species_50.tflite');
+final modelPath = await getModelPath('assets/ml/model_plant_species_50.tflite');
+    //final modelPath = await getModelPath('assets/ml/plant_disease.tflite');
 
     // Load for image labeling
     final labelerOptions = LocalLabelerOptions(

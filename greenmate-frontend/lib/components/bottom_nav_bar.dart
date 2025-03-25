@@ -24,8 +24,8 @@ class MyBottomNavBar extends StatelessWidget {
             ),
 
             GButton(
-                icon: Icons.search,
-                text: 'Search'
+                icon: Icons.energy_savings_leaf_outlined,
+                text: 'Diseases'
             ),
 
             GButton(
