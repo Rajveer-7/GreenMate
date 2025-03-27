@@ -1,0 +1,2 @@
+firebase:
+  credentialsPath: ${FIREBASE_CREDENTIALS_PATH}
