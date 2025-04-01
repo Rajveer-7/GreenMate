@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:green_mate/pages/intro_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'pages/login_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const GreenMateApp());
 }
 
@@ -12,7 +15,9 @@ class GreenMateApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: IntroPage(),
+      title: 'GreenMate',
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: const LoginPage(),
     );
   }
 }
