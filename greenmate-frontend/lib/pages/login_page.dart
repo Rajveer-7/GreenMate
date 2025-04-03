@@ -1,42 +1,79 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login/flutter_login.dart';
-import 'package:green_mate/pages/home_page.dart';
+import '../components/my_button.dart';
+import '../components/my_textfield.dart';
+import '../components/square_tile.dart';
 
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
 
-  //Loading Time....
-  Duration get loadingTime => const Duration(milliseconds: 2000);
+class LoginPage extends StatefulWidget {
+  LoginPage({super.key});
 
-  //Temporary Email and Password
-  final String tempEmail = 'abc@gmail.com';
-  final String tempPassword = '123';
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
 
-  //Login Function
-  Future<String?> _authUser(LoginData data) async {
+class _LoginPageState extends State<LoginPage> {
+  // text editing controllers
+  final emailController = TextEditingController();
 
+  final passwordController = TextEditingController();
 
-    //Delay for loading
-    await Future.delayed(loadingTime);
+  // sign user in method
+  void signUserIn() async{
 
-    //Check if entered credentials match
-    if (data.name != tempEmail || data.password != tempPassword) {
-      return 'Invalid email or password';
+    //show loading circle
+    showDialog(
+        context: context,
+        builder: (context){
+          return const Center(
+              child: CircularProgressIndicator(),
+          );
+      },
+    );
+    
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      Navigator.pop(context);
+    }on FirebaseAuthException catch(e){
+      Navigator.pop(context);
+      //Wrong Email
+      if(e.code == 'user-not-found'){
+        print('wrong email');
+        wrongEmailMessage();
+      }
+      //Wrong Password
+      else if(e.code == 'wrong-password'){
+        wrongPasswordMessage();
+      }
     }
 
-    //Return null if login is successful
-    return null;
   }
 
-  //Forgot Password
-  Future<String?> _recoverPassword(String data){
-    return Future.delayed(loadingTime).then((value) => null);
+
+  void wrongEmailMessage(){
+    showDialog(
+      context: context,
+      builder: (context) {
+
+        return const AlertDialog(
+          title: Text('Wrong Email'),
+        );
+      },
+    );
   }
 
-  //Sign Up
-  Future<String?> _signUp(SignupData data){
-    return Future.delayed(loadingTime).then((value) => null);
+  void wrongPasswordMessage(){
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(title: Text('Wrong Password'),
+        );
+      },
+    );
   }
 
 
@@ -44,38 +81,142 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FlutterLogin(
-          onLogin: _authUser,
-          onRecoverPassword: _recoverPassword,
-          onSignup: _signUp,
-          logo: 'lib/images/Green_Mate_White3.png',
-          theme: LoginTheme(
-            primaryColor: Colors.grey[900],
-            cardTheme: CardTheme(
-              color: Colors.grey[300],
+      backgroundColor: Colors.grey[300],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 50),
 
+              // logo
+              const Icon(
+                Icons.lock,
+                size: 100,
+              ),
 
-            )
+              const SizedBox(height: 50),
+
+              // welcome back, you've been missed!
+              Text(
+                'Welcome back you\'ve been missed!',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 16,
+                ),
+              ),
+
+              const SizedBox(height: 25),
+
+              // Email textfield
+              MyTextField(
+                controller: emailController,
+                hintText: 'Username',
+                obscureText: false,
+              ),
+
+              const SizedBox(height: 10),
+
+              // password textfield
+              MyTextField(
+                controller: passwordController,
+                hintText: 'Password',
+                obscureText: true,
+              ),
+
+              const SizedBox(height: 10),
+
+              // forgot password?
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 25),
+
+              // sign in button
+              MyButton(
+                onTap: signUserIn,
+              ),
+
+              const SizedBox(height: 50),
+
+              // or continue with
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'Or continue with',
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 50),
+
+              // google + apple sign in buttons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  // google button
+                  SquareTile(imagePath: 'lib/images/google.png'),
+
+                  SizedBox(width: 25),
+
+                  // apple button
+                  SquareTile(imagePath: 'lib/images/apple.png')
+                ],
+              ),
+
+              const SizedBox(height: 50),
+
+              // not a member? register now
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Not a member?',
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                  const SizedBox(width: 4),
+                  const Text(
+                    'Register now',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              )
+            ],
           ),
-        onSubmitAnimationCompleted: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => const HomePage(),
-            ),
-          );
-        },
-
+        ),
       ),
-
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const HomePage()),
-            );
-          },
-          child: const Icon(Icons.arrow_forward),
-        )
-
     );
   }
 }

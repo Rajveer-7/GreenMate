@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:green_mate/components/bottom_nav_bar.dart';
 import 'package:green_mate/pages/plants_page.dart';
@@ -13,6 +14,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  void signUserOut(){
+    FirebaseAuth.instance.signOut();
+  }
 
   // variable to control nav bar
   int _selectedIndex = 0;
@@ -100,14 +105,18 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(left: 25, bottom: 25),
             child: ListTile(
               leading: Icon(
-                  Icons.logout,
-                  color: Colors.white
+                Icons.logout,
+                color: Colors.white,
               ),
-              title: Text('Logout', style: TextStyle(color: Colors.white),),
-
+              title: Text(
+                'Logout',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: signUserOut, // 👈 This calls your signOut function
             ),
           ),
-          
+
+
         ],
         ),
       ),

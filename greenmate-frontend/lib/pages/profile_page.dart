@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:green_mate/components/text_box.dart';
 
@@ -11,6 +12,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
 
   Future<void> editField(String field) async{}
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
           //Email
           Text(
-            "xyz123@gmail.com",
+            user.email!,
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.grey[700]),
           ),

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:green_mate/pages/intro_page.dart';
+import 'package:green_mate/pages/auth_page.dart';
 import 'package:green_mate/pages/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:green_mate/firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const GreenMateApp());
 }
 
@@ -13,7 +19,7 @@ class GreenMateApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: AuthPage(),
     );
   }
 }
